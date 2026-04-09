@@ -1,19 +1,19 @@
 # Supported File Types for Upload
 
-The Postiz CLI now correctly detects and uploads various media types.
+The Postnify CLI now correctly detects and uploads various media types.
 
 ## How It Works
 
 The CLI automatically detects the MIME type based on the file extension:
 
 ```bash
-postiz upload video.mp4
+postnify upload video.mp4
 # ✅ Detected as: video/mp4
 
-postiz upload image.png
+postnify upload image.png
 # ✅ Detected as: image/png
 
-postiz upload audio.mp3
+postnify upload audio.mp3
 # ✅ Detected as: audio/mpeg
 ```
 
@@ -29,10 +29,10 @@ postiz upload audio.mp3
 
 **Examples:**
 ```bash
-postiz upload photo.jpg
-postiz upload logo.png
-postiz upload animation.gif
-postiz upload icon.svg
+postnify upload photo.jpg
+postnify upload logo.png
+postnify upload animation.gif
+postnify upload icon.svg
 ```
 
 ### Videos
@@ -43,10 +43,10 @@ postiz upload icon.svg
 
 **Examples:**
 ```bash
-postiz upload video.mp4
-postiz upload clip.mov
-postiz upload recording.webm
-postiz upload movie.mkv
+postnify upload video.mp4
+postnify upload clip.mov
+postnify upload recording.webm
+postnify upload movie.mkv
 ```
 
 ### Audio
@@ -62,9 +62,9 @@ postiz upload movie.mkv
 
 **Examples:**
 ```bash
-postiz upload podcast.mp3
-postiz upload song.wav
-postiz upload audio.ogg
+postnify upload podcast.mp3
+postnify upload song.wav
+postnify upload audio.ogg
 ```
 
 ### Documents
@@ -77,8 +77,8 @@ postiz upload audio.ogg
 
 **Examples:**
 ```bash
-postiz upload document.pdf
-postiz upload report.docx
+postnify upload document.pdf
+postnify upload report.docx
 ```
 
 ### Other Files
@@ -92,30 +92,30 @@ For file types not listed above, the CLI uses:
 ### Upload an Image
 
 ```bash
-postiz upload ./images/photo.jpg
+postnify upload ./images/photo.jpg
 ```
 
 Response:
 ```json
 {
   "id": "upload-123",
-  "path": "https://cdn.postiz.com/uploads/photo.jpg",
-  "url": "https://cdn.postiz.com/uploads/photo.jpg"
+  "path": "https://cdn.postnify.com/uploads/photo.jpg",
+  "url": "https://cdn.postnify.com/uploads/photo.jpg"
 }
 ```
 
 ### Upload a Video (MP4)
 
 ```bash
-postiz upload ./videos/promo.mp4
+postnify upload ./videos/promo.mp4
 ```
 
 Response:
 ```json
 {
   "id": "upload-456",
-  "path": "https://cdn.postiz.com/uploads/promo.mp4",
-  "url": "https://cdn.postiz.com/uploads/promo.mp4"
+  "path": "https://cdn.postnify.com/uploads/promo.mp4",
+  "url": "https://cdn.postnify.com/uploads/promo.mp4"
 }
 ```
 
@@ -123,14 +123,14 @@ Response:
 
 ```bash
 # 1. Upload the file
-RESULT=$(postiz upload video.mp4)
+RESULT=$(postnify upload video.mp4)
 echo $RESULT
 
 # 2. Extract the path (you'll need jq or similar)
 PATH=$(echo $RESULT | jq -r '.path')
 
 # 3. Use in a post
-postiz posts:create \
+postnify posts:create \
   -c "Check out my video!" \
   -m "$PATH" \
   -i "tiktok-123"
@@ -140,13 +140,13 @@ postiz posts:create \
 
 ```bash
 # Upload images
-postiz upload image1.jpg
-postiz upload image2.png
-postiz upload image3.gif
+postnify upload image1.jpg
+postnify upload image2.png
+postnify upload image3.gif
 
 # Upload videos
-postiz upload video1.mp4
-postiz upload video2.mov
+postnify upload video1.mp4
+postnify upload video2.mov
 ```
 
 ## What Changed (Fix)
@@ -154,7 +154,7 @@ postiz upload video2.mov
 ### Before (❌ Bug)
 
 ```bash
-postiz upload video.mp4
+postnify upload video.mp4
 # ❌ Was detected as: image/jpeg (WRONG!)
 ```
 
@@ -163,13 +163,13 @@ The problem: The CLI defaulted to `image/jpeg` for any unknown file type.
 ### After (✅ Fixed)
 
 ```bash
-postiz upload video.mp4
+postnify upload video.mp4
 # ✅ Correctly detected as: video/mp4
 
-postiz upload audio.mp3
+postnify upload audio.mp3
 # ✅ Correctly detected as: audio/mpeg
 
-postiz upload document.pdf
+postnify upload document.pdf
 # ✅ Correctly detected as: application/pdf
 ```
 
@@ -211,7 +211,7 @@ Some platforms may not accept certain file types. Check the platform's documenta
 ffmpeg -i video.avi video.mp4
 
 # Then upload
-postiz upload video.mp4
+postnify upload video.mp4
 ```
 
 ### File Size Limits
@@ -230,26 +230,26 @@ If you renamed a file with the wrong extension:
 ```bash
 # ❌ Wrong: PNG file renamed to .jpg
 mv image.png image.jpg
-postiz upload image.jpg  # Might fail
+postnify upload image.jpg  # Might fail
 
 # ✅ Correct: Keep original extension
-postiz upload image.png
+postnify upload image.png
 ```
 
 ## Testing File Upload
 
 ```bash
 # Set API key
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 
 # Test image upload
-postiz upload test-image.jpg
+postnify upload test-image.jpg
 
 # Test video upload
-postiz upload test-video.mp4
+postnify upload test-video.mp4
 
 # Test audio upload
-postiz upload test-audio.mp3
+postnify upload test-audio.mp3
 ```
 
 ## Error Messages
@@ -278,7 +278,7 @@ chmod 644 your-file.mp4
 
 **Solution:** Set your API key:
 ```bash
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 ```
 
 ## Summary

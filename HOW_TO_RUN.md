@@ -20,7 +20,7 @@ node apps/cli/dist/index.js posts:list
 
 ## Option 2: Link Globally (Recommended for Development) 🔗
 
-This creates a global `postiz` command you can use anywhere:
+This creates a global `postnify` command you can use anywhere:
 
 ```bash
 # From the monorepo root
@@ -28,23 +28,23 @@ cd apps/cli
 pnpm link --global
 
 # Now you can use it anywhere!
-postiz --help
-postiz posts:list
-postiz posts:create -c "Hello!" -i "twitter-123"
+postnify --help
+postnify posts:list
+postnify posts:create -c "Hello!" -i "twitter-123"
 
 # To unlink later
 pnpm unlink --global
 ```
 
-**After linking, you can use `postiz` from any directory!**
+**After linking, you can use `postnify` from any directory!**
 
 ## Option 3: Use pnpm Filter (From Root) 📦
 
 ```bash
 # From the monorepo root
-pnpm --filter postiz start -- --help
-pnpm --filter postiz start -- posts:list
-pnpm --filter postiz start -- posts:create -c "Hello" -i "twitter-123"
+pnpm --filter postnify start -- --help
+pnpm --filter postnify start -- posts:list
+pnpm --filter postnify start -- posts:create -c "Hello" -i "twitter-123"
 ```
 
 ## Option 4: Use npm/npx (After Publishing) 🌐
@@ -56,7 +56,7 @@ Once published to npm:
 npm install -g postnify
 
 # Or use with npx (no install)
-npx postiz --help
+npx postnify --help
 npx postnify posts:list
 ```
 
@@ -90,18 +90,18 @@ node apps/cli/dist/index.js --help
 ```bash
 cd apps/cli
 pnpm link --global
-postiz --help
+postnify --help
 ```
 
 ## Troubleshooting
 
-### "Command not found: postiz"
+### "Command not found: postnify"
 
 If you linked globally but still get this error:
 
 ```bash
 # Check if it's linked
-which postiz
+which postnify
 
 # If not found, try linking again
 cd apps/cli
@@ -147,8 +147,8 @@ If you linked globally, the changes will be reflected immediately (no need to re
 ### Test Help Command
 
 ```bash
-postiz --help
-postiz posts:create --help
+postnify --help
+postnify posts:create --help
 ```
 
 ### Test with Sample Command (requires API key)
@@ -157,10 +157,10 @@ postiz posts:create --help
 export POSTNIFY_API_KEY=your_key
 
 # List integrations
-postiz integrations:list
+postnify integrations:list
 
 # Create a test post
-postiz posts:create \
+postnify posts:create \
   -c "Test post from CLI" \
   -i "your-integration-id"
 ```
@@ -181,7 +181,7 @@ pnpm run build:cli
 
 ```bash
 # If linked globally
-postiz --help
+postnify --help
 
 # Or direct execution
 node apps/cli/dist/index.js --help
@@ -194,14 +194,14 @@ node apps/cli/dist/index.js --help
 pnpm run dev
 
 # In another terminal, test your changes
-postiz --help
+postnify --help
 ```
 
 ## Environment Variables
 
 ### Required
 
-- `POSTNIFY_API_KEY` - Your Postiz API key (required for all operations)
+- `POSTNIFY_API_KEY` - Your Postnify API key (required for all operations)
 
 ### Optional
 
@@ -232,7 +232,7 @@ Create a convenient alias:
 
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-alias pz='postiz'
+alias pz='postnify'
 
 # Now you can use
 pz posts:list
@@ -259,8 +259,8 @@ pnpm run publish
 npm install -g postnify
 
 # Project-specific
-npm install postiz
-npx postiz --help
+npm install postnify
+npx postnify --help
 ```
 
 ## Summary of Methods
@@ -269,10 +269,10 @@ npx postiz --help
 |--------|---------|----------|
 | **Direct Node** | `node apps/cli/dist/index.js` | Quick testing, no installation |
 | **Direct Execution** | `./apps/cli/dist/index.js` | Same as above, slightly shorter |
-| **Global Link** | `postiz` (after `pnpm link --global`) | **Recommended** for development |
-| **pnpm Filter** | `pnpm --filter postiz start --` | From monorepo root |
-| **npm Global** | `postiz` (after `npm i -g postiz`) | After publishing to npm |
-| **npx** | `npx postiz` | One-off usage without installing |
+| **Global Link** | `postnify` (after `pnpm link --global`) | **Recommended** for development |
+| **pnpm Filter** | `pnpm --filter postnify start --` | From monorepo root |
+| **npm Global** | `postnify` (after `npm i -g postnify`) | After publishing to npm |
+| **npx** | `npx postnify` | One-off usage without installing |
 
 ## Recommended Setup
 
@@ -290,11 +290,11 @@ pnpm link --global
 export POSTNIFY_API_KEY=your_key
 
 # 4. Test
-postiz --help
-postiz integrations:list
+postnify --help
+postnify integrations:list
 
 # 5. Start using!
-postiz posts:create -c "My first post" -i "twitter-123"
+postnify posts:create -c "My first post" -i "twitter-123"
 ```
 
-Now you can use `postiz` from anywhere! 🚀
+Now you can use `postnify` from anywhere! 🚀

@@ -1,6 +1,6 @@
 # Publishing the Postnify CLI to npm
 
-## Quick Publish (Current Name: "postiz")
+## Quick Publish (Current Name: "postnify")
 
 ```bash
 # From apps/cli directory
@@ -15,12 +15,12 @@ npm install -g postnify
 pnpm install -g postnify
 
 # And use:
-postiz --help
+postnify --help
 ```
 
 ## Publishing with a Different Package Name
 
-If you want to publish as a different npm package name (e.g., "agent-postiz"):
+If you want to publish as a different npm package name (e.g., "agent-postnify"):
 
 ### 1. Change Package Name
 
@@ -28,10 +28,10 @@ Edit `apps/cli/package.json`:
 
 ```json
 {
-  "name": "agent-postiz",  // ← Changed package name
+  "name": "agent-postnify",  // ← Changed package name
   "version": "1.0.0",
   "bin": {
-    "postiz": "./dist/index.js"  // ← Keep command name!
+    "postnify": "./dist/index.js"  // ← Keep command name!
   }
 }
 ```
@@ -49,55 +49,55 @@ pnpm publish --access public
 ### 3. Users Install
 
 ```bash
-npm install -g agent-postiz
+npm install -g agent-postnify
 # or
-pnpm install -g agent-postiz
+pnpm install -g agent-postnify
 ```
 
 ### 4. Users Use
 
-Even though the package is called "agent-postiz", the command is still:
+Even though the package is called "agent-postnify", the command is still:
 
 ```bash
-postiz --help  # ← Command name from "bin" field
-postiz posts:create -c "Hello!" -i "twitter-123"
+postnify --help  # ← Command name from "bin" field
+postnify posts:create -c "Hello!" -i "twitter-123"
 ```
 
 ## Package Name vs Command Name
 
 | Field | Purpose | Example |
 |-------|---------|---------|
-| `"name"` | npm package name (what you install) | `"agent-postiz"` |
-| `"bin"` | Command name (what you type) | `"postiz"` |
+| `"name"` | npm package name (what you install) | `"agent-postnify"` |
+| `"bin"` | Command name (what you type) | `"postnify"` |
 
 **Examples:**
 
 1. **Same name:**
    ```json
-   "name": "postiz",
-   "bin": { "postiz": "./dist/index.js" }
+   "name": "postnify",
+   "bin": { "postnify": "./dist/index.js" }
    ```
-   Install: `npm i -g postiz`
-   Use: `postiz`
+   Install: `npm i -g postnify`
+   Use: `postnify`
 
 2. **Different names:**
    ```json
-   "name": "agent-postiz",
-   "bin": { "postiz": "./dist/index.js" }
+   "name": "agent-postnify",
+   "bin": { "postnify": "./dist/index.js" }
    ```
-   Install: `npm i -g agent-postiz`
-   Use: `postiz`
+   Install: `npm i -g agent-postnify`
+   Use: `postnify`
 
 3. **Multiple commands:**
    ```json
-   "name": "agent-postiz",
+   "name": "agent-postnify",
    "bin": {
-     "postiz": "./dist/index.js",
+     "postnify": "./dist/index.js",
      "pz": "./dist/index.js"
    }
    ```
-   Install: `npm i -g agent-postiz`
-   Use: `postiz` or `pz`
+   Install: `npm i -g agent-postnify`
+   Use: `postnify` or `pz`
 
 ## Publishing Checklist
 
@@ -105,7 +105,7 @@ postiz posts:create -c "Hello!" -i "twitter-123"
 
 - [ ] Verify package name is available on npm
   ```bash
-  npm view postiz
+  npm view postnify
   # If error "404 Not Found" - name is available!
   ```
 
@@ -131,7 +131,7 @@ postiz posts:create -c "Hello!" -i "twitter-123"
 - [ ] Test locally
   ```bash
   pnpm link --global
-  postiz --help
+  postnify --help
   ```
 
 ### Publish to npm
@@ -153,14 +153,14 @@ pnpm run publish-cli
 
 Verify it's published:
 ```bash
-npm view postiz
+npm view postnify
 # Should show your package info
 ```
 
 Test installation:
 ```bash
 npm install -g postnify
-postiz --version
+postnify --version
 ```
 
 ## Using from Monorepo Root
@@ -214,21 +214,21 @@ If you want to publish under an organization scope:
 
 ```json
 {
-  "name": "@yourorg/postiz",
+  "name": "@yourorg/postnify",
   "bin": {
-    "postiz": "./dist/index.js"
+    "postnify": "./dist/index.js"
   }
 }
 ```
 
 Install:
 ```bash
-npm install -g @yourorg/postiz
+npm install -g @yourorg/postnify
 ```
 
 Use:
 ```bash
-postiz --help
+postnify --help
 ```
 
 ## Testing Before Publishing
@@ -244,7 +244,7 @@ node dist/index.js --help
 
 ```bash
 pnpm link --global
-postiz --help
+postnify --help
 pnpm unlink --global
 ```
 
@@ -262,9 +262,9 @@ npm pack
 # Creates a .tgz file
 
 # Test installing the tarball
-npm install -g ./postiz-1.0.0.tgz
-postiz --help
-npm uninstall -g postiz
+npm install -g ./postnify-1.0.0.tgz
+postnify --help
+npm uninstall -g postnify
 ```
 
 ## Continuous Publishing
@@ -312,13 +312,13 @@ git push origin cli-v1.0.0
 ### "You do not have permission to publish"
 
 - Make sure you're logged in: `npm login`
-- Check package name isn't taken: `npm view postiz`
+- Check package name isn't taken: `npm view postnify`
 - If scoped, ensure org access: `npm org ls yourorg`
 
 ### "Package name too similar to existing package"
 
 - Choose a more unique name
-- Or use a scoped package: `@yourorg/postiz`
+- Or use a scoped package: `@yourorg/postnify`
 
 ### "Missing required files"
 
@@ -330,19 +330,19 @@ git push origin cli-v1.0.0
 
 - Check `"bin"` field is correct
 - Ensure `dist/index.js` has shebang: `#!/usr/bin/env node`
-- Try reinstalling: `npm uninstall -g postiz && npm install -g postnify`
+- Try reinstalling: `npm uninstall -g postnify && npm install -g postnify`
 
 ## Recommended Names
 
-If "postiz" is taken, consider:
+If "postnify" is taken, consider:
 
-- `@postiz/cli`
-- `postiz-cli`
-- `postiz-agent`
-- `agent-postiz`
-- `@yourorg/postiz`
+- `@postnify/cli`
+- `postnify-cli`
+- `postnify-agent`
+- `agent-postnify`
+- `@yourorg/postnify`
 
-Remember: The package name is just for installation. The command can still be `postiz`!
+Remember: The package name is just for installation. The command can still be `postnify`!
 
 ## Summary
 
@@ -370,8 +370,8 @@ pnpm install -g postnify
 **Users use:**
 
 ```bash
-postiz --help
-postiz posts:create -c "Hello!" -i "twitter-123"
+postnify --help
+postnify posts:create -c "Hello!" -i "twitter-123"
 ```
 
 🚀 **Ready to publish!**

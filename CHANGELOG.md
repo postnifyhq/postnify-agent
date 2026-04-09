@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - SKILL.md for AI agent usage patterns
 
 ### Features
-- Command-line interface for Postiz API
+- Command-line interface for Postnify API
 - Support for scheduled posts
 - Multi-platform posting via integrations
 - Media upload functionality
