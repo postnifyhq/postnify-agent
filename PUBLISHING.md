@@ -1,4 +1,4 @@
-# Publishing the Postiz CLI to npm
+# Publishing the Postnify CLI to npm
 
 ## Quick Publish (Current Name: "postiz")
 
@@ -10,9 +10,9 @@ pnpm publish --access public
 
 Then users can install:
 ```bash
-npm install -g postiz
+npm install -g postnify
 # or
-pnpm install -g postiz
+pnpm install -g postnify
 
 # And use:
 postiz --help
@@ -159,7 +159,7 @@ npm view postiz
 
 Test installation:
 ```bash
-npm install -g postiz
+npm install -g postnify
 postiz --version
 ```
 
@@ -330,7 +330,7 @@ git push origin cli-v1.0.0
 
 - Check `"bin"` field is correct
 - Ensure `dist/index.js` has shebang: `#!/usr/bin/env node`
-- Try reinstalling: `npm uninstall -g postiz && npm install -g postiz`
+- Try reinstalling: `npm uninstall -g postiz && npm install -g postnify`
 
 ## Recommended Names
 
@@ -362,9 +362,9 @@ pnpm publish --access public
 **Users install:**
 
 ```bash
-npm install -g postiz
+npm install -g postnify
 # or
-pnpm install -g postiz
+pnpm install -g postnify
 ```
 
 **Users use:**

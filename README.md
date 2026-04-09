@@ -1,14 +1,14 @@
 ## Install as a skill
 
 ```bash
-npx skills add gitroomhq/postiz-agent
+npx skills add postnify/postnify-agent
 ```
 
-# Postiz CLI
+# Postnify CLI
 
 **Social media automation CLI for AI agents** - Schedule posts across 28+ platforms programmatically.
 
-The Postiz CLI provides a command-line interface to the Postiz API, enabling developers and AI agents to automate social media posting, manage content, and handle media uploads across platforms like Twitter/X, LinkedIn, Reddit, YouTube, TikTok, Instagram, Facebook, and more.
+The Postnify CLI provides a command-line interface to the Postnify API, enabling developers and AI agents to automate social media posting, manage content, and handle media uploads across platforms like Twitter/X, LinkedIn, Reddit, YouTube, TikTok, Instagram, Facebook, and more.
 
 ---
 
@@ -17,9 +17,9 @@ The Postiz CLI provides a command-line interface to the Postiz API, enabling dev
 ### From npm (Recommended)
 
 ```bash
-npm install -g postiz
+npm install -g postnify
 # or
-pnpm install -g postiz
+pnpm install -g postnify
 ```
 
 ---
@@ -37,7 +37,7 @@ postiz auth:login
 This will:
 1. Display a one-time code in your terminal
 2. Open your browser to authorize
-3. Automatically save credentials to `~/.postiz/credentials.json`
+3. Automatically save credentials to `~/.postnify/credentials.json`
 
 ```bash
 # Check current auth status (verifies credentials are still valid)
@@ -49,18 +49,18 @@ postiz auth:logout
 
 #### Self-Hosting the Auth Server
 
-By default, `postiz auth:login` uses the hosted auth server at `cli-auth.postiz.com`. If you want to self-host the OAuth2 device flow server, follow the guide in [`server/SERVER.md`](./server/SERVER.md).
+By default, `postnify auth:login` uses the hosted auth server at `cli-auth.postnify.com`. If you want to self-host the OAuth2 device flow server, follow the guide in [`server/SERVER.md`](./server/SERVER.md).
 
 ### Option 2: API Key
 
 ```bash
-export POSTIZ_API_KEY=your_api_key_here
+export POSTNIFY_API_KEY=your_api_key_here
 ```
 
 **Optional:** Custom API endpoint
 
 ```bash
-export POSTIZ_API_URL=https://your-custom-api.com
+export POSTNIFY_API_URL=https://your-custom-api.com
 ```
 
 > **Note:** OAuth2 credentials take priority over the API key when both are present.
@@ -247,7 +247,7 @@ postiz upload <file-path>
 You **must** upload media files to Postiz before using them in posts. Many platforms (especially TikTok, Instagram, and YouTube) require verified/trusted URLs and will reject external links.
 
 **Workflow:**
-1. Upload your file using `postiz upload`
+1. Upload your file using `postnify upload`
 2. Extract the returned URL
 3. Use that URL in your post's `-m` parameter
 
@@ -261,7 +261,7 @@ You **must** upload media files to Postiz before using them in posts. Many platf
 RESULT=$(postiz upload video.mp4)
 PATH=$(echo "$RESULT" | jq -r '.path')
 
-# 2. Use the Postiz URL in your post
+# 2. Use the Postnify URL in your post
 postiz posts:create -c "Check out my video!" -s "2024-12-31T12:00:00Z" -m "$PATH" -i "tiktok-id"
 ```
 
@@ -505,7 +505,7 @@ DATES=("2024-02-14T09:00:00Z" "2024-02-15T09:00:00Z" "2024-02-16T09:00:00Z")
 CONTENT=("Monday motivation 💪" "Tuesday tips 💡" "Wednesday wisdom 🧠")
 
 for i in "${!DATES[@]}"; do
-  postiz posts:create \
+  postnify posts:create \
     -c "${CONTENT[$i]}" \
     -s "${DATES[$i]}" \
     -i "twitter-id"
@@ -559,11 +559,11 @@ The CLI interacts with these Postiz API endpoints:
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `POSTIZ_API_KEY` | No* | - | Your Postiz API key |
-| `POSTIZ_API_URL` | No | `https://api.postiz.com` | Custom API endpoint |
-| `POSTIZ_AUTH_SERVER` | No | `https://cli-auth.postiz.com` | Custom auth server URL |
+| `POSTNIFY_API_KEY` | No* | - | Your Postiz API key |
+| `POSTNIFY_API_URL` | No | `https://api.postnify.com` | Custom API endpoint |
+| `POSTIZ_AUTH_SERVER` | No | `https://cli-auth.postnify.com` | Custom auth server URL |
 
-*Either OAuth2 (via `postiz auth:login`) or `POSTIZ_API_KEY` is required.
+*Either OAuth2 (via `postnify auth:login`) or `POSTNIFY_API_KEY` is required.
 
 ---
 
@@ -578,7 +578,7 @@ The CLI provides clear error messages with exit codes:
 
 | Error | Solution |
 |-------|----------|
-| `Not authenticated` | Run `postiz auth:login` or set `POSTIZ_API_KEY` |
+| `Not authenticated` | Run `postnify auth:login` or set `POSTNIFY_API_KEY` |
 | `Integration not found` | Run `integrations:list` to get valid IDs |
 | `startDate/endDate required` | Use ISO 8601 format: `"2024-12-31T12:00:00Z"` |
 | `Invalid settings` | Check `integrations:settings` for required fields |
@@ -640,7 +640,7 @@ Output in `dist/`:
 postiz auth:login                                              # OAuth2 device flow
 postiz auth:status                                             # Check auth
 postiz auth:logout                                             # Remove credentials
-export POSTIZ_API_KEY=your_key                                 # Or use API key
+export POSTNIFY_API_KEY=your_key                                 # Or use API key
 
 # Discovery
 postiz integrations:list                           # List integrations
@@ -678,7 +678,7 @@ postiz posts:create --help                        # Command help
 
 ## Contributing
 
-This CLI is part of the [Postiz monorepo](https://github.com/gitroomhq/postiz-app).
+This CLI is part of the [Postiz monorepo](https://github.com/postnify/postnify-app).
 
 To contribute:
 1. Fork the repository
@@ -697,10 +697,10 @@ AGPL-3.0
 
 ## Links
 
-- **Website:** [postiz.com](https://postiz.com)
-- **API Docs:** [docs.postiz.com](https://docs.postiz.com)
-- **GitHub:** [gitroomhq/postiz-app](https://github.com/gitroomhq/postiz-app)
-- **Issues:** [Report bugs](https://github.com/gitroomhq/postiz-app/issues)
+- **Website:** [postnify.com](https://postnify.com)
+- **API Docs:** [docs.postnify.com](https://docs.postnify.com)
+- **GitHub:** [postnify/postnify-app](https://github.com/postnify/postnify-app)
+- **Issues:** [Report bugs](https://github.com/postnify/postnify-app/issues)
 
 ---
 

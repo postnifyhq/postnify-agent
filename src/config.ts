@@ -12,14 +12,14 @@ export function getConfig(): PostizConfig {
   }
 
   // Fall back to environment variable
-  const apiKey = process.env.POSTIZ_API_KEY;
-  const apiUrl = process.env.POSTIZ_API_URL;
+  const apiKey = process.env.POSTNIFY_API_KEY;
+  const apiUrl = process.env.POSTNIFY_API_URL;
 
   if (!apiKey) {
     console.error('❌ Error: No authentication found.');
     console.error('Options:');
-    console.error('  1. OAuth2: postiz auth:login --client-id <id> --client-secret <secret>');
-    console.error('  2. API Key: export POSTIZ_API_KEY=your_api_key');
+    console.error('  1. OAuth2: postnify auth:login --client-id <id> --client-secret <secret>');
+    console.error('  2. API Key: export POSTNIFY_API_KEY=your_api_key');
     process.exit(1);
   }
 

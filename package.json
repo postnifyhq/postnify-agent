@@ -1,10 +1,10 @@
 {
-  "name": "postiz",
+  "name": "postnify",
   "version": "2.0.12",
-  "description": "Postiz CLI - Command line interface for the Postiz social media scheduling API",
+  "description": "Postnify CLI - Command line interface for the Postnify social media scheduling API",
   "main": "dist/index.js",
   "bin": {
-    "postiz": "./dist/index.js"
+    "postnify": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsup --watch",
@@ -21,7 +21,7 @@
     "LICENSE"
   ],
   "keywords": [
-    "postiz",
+    "postnify",
     "cli",
     "social-media",
     "scheduling",
@@ -36,15 +36,15 @@
     "youtube",
     "reddit"
   ],
-  "author": "Nevo David",
+  "author": "Postnify",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gitroomhq/postiz-agent.git"
+    "url": "https://github.com/postnify/postnify-agent.git"
   },
-  "homepage": "https://github.com/gitroomhq/postiz-agent#readme",
+  "homepage": "https://github.com/postnify/postnify-agent#readme",
   "bugs": {
-    "url": "https://github.com/gitroomhq/postiz-agent/issues"
+    "url": "https://github.com/postnify/postnify-agent/issues"
   },
   "engines": {
     "node": ">=18.0.0"

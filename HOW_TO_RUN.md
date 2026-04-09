@@ -1,4 +1,4 @@
-# How to Run the Postiz CLI
+# How to Run the Postnify CLI
 
 There are several ways to run the CLI, depending on your needs.
 
@@ -14,7 +14,7 @@ node apps/cli/dist/index.js --help
 ./apps/cli/dist/index.js --help
 
 # Example command
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 node apps/cli/dist/index.js posts:list
 ```
 
@@ -53,11 +53,11 @@ Once published to npm:
 
 ```bash
 # Install globally
-npm install -g postiz
+npm install -g postnify
 
 # Or use with npx (no install)
 npx postiz --help
-npx postiz posts:list
+npx postnify posts:list
 ```
 
 ## Quick Setup Guide
@@ -72,10 +72,10 @@ pnpm run build:cli
 ### Step 2: Set Your API Key
 
 ```bash
-export POSTIZ_API_KEY=your_api_key_here
+export POSTNIFY_API_KEY=your_api_key_here
 
 # To make it permanent, add to your shell profile:
-echo 'export POSTIZ_API_KEY=your_api_key' >> ~/.bashrc
+echo 'export POSTNIFY_API_KEY=your_api_key' >> ~/.bashrc
 # or ~/.zshrc if you use zsh
 ```
 
@@ -111,13 +111,13 @@ pnpm link --global
 echo $PATH
 ```
 
-### "POSTIZ_API_KEY is not set"
+### "POSTNIFY_API_KEY is not set"
 
 ```bash
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 
 # Verify it's set
-echo $POSTIZ_API_KEY
+echo $POSTNIFY_API_KEY
 ```
 
 ### Permission Denied
@@ -154,7 +154,7 @@ postiz posts:create --help
 ### Test with Sample Command (requires API key)
 
 ```bash
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 
 # List integrations
 postiz integrations:list
@@ -201,28 +201,28 @@ postiz --help
 
 ### Required
 
-- `POSTIZ_API_KEY` - Your Postiz API key (required for all operations)
+- `POSTNIFY_API_KEY` - Your Postiz API key (required for all operations)
 
 ### Optional
 
-- `POSTIZ_API_URL` - Custom API endpoint (default: `https://api.postiz.com`)
+- `POSTNIFY_API_URL` - Custom API endpoint (default: `https://api.postnify.com`)
 
 ### Setting Environment Variables
 
 **Temporary (current session):**
 ```bash
-export POSTIZ_API_KEY=your_key
-export POSTIZ_API_URL=https://custom-api.com
+export POSTNIFY_API_KEY=your_key
+export POSTNIFY_API_URL=https://custom-api.com
 ```
 
 **Permanent (add to shell profile):**
 ```bash
 # For bash
-echo 'export POSTIZ_API_KEY=your_key' >> ~/.bashrc
+echo 'export POSTNIFY_API_KEY=your_key' >> ~/.bashrc
 source ~/.bashrc
 
 # For zsh
-echo 'export POSTIZ_API_KEY=your_key' >> ~/.zshrc
+echo 'export POSTNIFY_API_KEY=your_key' >> ~/.zshrc
 source ~/.zshrc
 ```
 
@@ -256,7 +256,7 @@ pnpm run publish
 
 ```bash
 # Global install
-npm install -g postiz
+npm install -g postnify
 
 # Project-specific
 npm install postiz
@@ -287,7 +287,7 @@ cd apps/cli
 pnpm link --global
 
 # 3. Set API key
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 
 # 4. Test
 postiz --help

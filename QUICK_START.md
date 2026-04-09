@@ -1,4 +1,4 @@
-# Postiz CLI - Quick Start Guide
+# Postnify CLI - Quick Start Guide
 
 ## Installation
 
@@ -35,7 +35,7 @@ postiz --help
 
 ```bash
 # Once published
-npm install -g postiz
+npm install -g postnify
 
 # Or with pnpm
 pnpm add -g postiz
@@ -45,7 +45,7 @@ pnpm add -g postiz
 
 ### 1. Get Your API Key
 
-1. Log in to your Postiz account at https://postiz.com
+1. Log in to your Postiz account at https://postnify.com
 2. Navigate to Settings → API Keys
 3. Generate a new API key
 
@@ -53,20 +53,20 @@ pnpm add -g postiz
 
 ```bash
 # Bash/Zsh
-export POSTIZ_API_KEY=your_api_key_here
+export POSTNIFY_API_KEY=your_api_key_here
 
 # Fish
-set -x POSTIZ_API_KEY your_api_key_here
+set -x POSTNIFY_API_KEY your_api_key_here
 
 # PowerShell
-$env:POSTIZ_API_KEY="your_api_key_here"
+$env:POSTNIFY_API_KEY="your_api_key_here"
 ```
 
 To make it permanent, add it to your shell profile:
 
 ```bash
 # ~/.bashrc or ~/.zshrc
-echo 'export POSTIZ_API_KEY=your_api_key_here' >> ~/.bashrc
+echo 'export POSTNIFY_API_KEY=your_api_key_here' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -203,7 +203,7 @@ postiz integrations:list | jq '.[] | .provider'
 # Create a batch of posts
 
 for hour in 09 12 15 18; do
-  postiz posts:create \
+  postnify posts:create \
     -c "Automated post at ${hour}:00" \
     -s "2024-01-15T${hour}:00:00Z"
   echo "Created post for ${hour}:00"
@@ -214,7 +214,7 @@ done
 
 ```bash
 # Custom API endpoint (for self-hosted)
-export POSTIZ_API_URL=https://your-instance.com
+export POSTNIFY_API_URL=https://your-instance.com
 
 # Use the CLI with custom endpoint
 postiz posts:list
@@ -225,12 +225,12 @@ postiz posts:list
 ### API Key Not Set
 
 ```
-❌ Error: POSTIZ_API_KEY environment variable is required
+❌ Error: POSTNIFY_API_KEY environment variable is required
 ```
 
 **Solution:** Set the environment variable:
 ```bash
-export POSTIZ_API_KEY=your_key
+export POSTNIFY_API_KEY=your_key
 ```
 
 ### Command Not Found
@@ -278,7 +278,7 @@ postiz posts:delete --help
 
 ## Links
 
-- [Postiz Website](https://postiz.com)
-- [API Documentation](https://postiz.com/api-docs)
-- [GitHub Repository](https://github.com/gitroomhq/postiz-app)
-- [Report Issues](https://github.com/gitroomhq/postiz-app/issues)
+- [Postiz Website](https://postnify.com)
+- [API Documentation](https://postnify.com/api-docs)
+- [GitHub Repository](https://github.com/postnify/postnify-app)
+- [Report Issues](https://github.com/postnify/postnify-app/issues)

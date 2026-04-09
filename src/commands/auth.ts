@@ -3,10 +3,10 @@ import { join } from 'path';
 import { homedir } from 'os';
 import fetch from 'node-fetch';
 
-const CREDENTIALS_DIR = join(homedir(), '.postiz');
+const CREDENTIALS_DIR = join(homedir(), '.postnify');
 const CREDENTIALS_FILE = join(CREDENTIALS_DIR, 'credentials.json');
 
-const DEFAULT_AUTH_SERVER = 'https://cli-auth.postiz.com';
+const DEFAULT_AUTH_SERVER = 'https://cli-auth.postnify.com';
 
 interface StoredCredentials {
   accessToken: string;
@@ -58,7 +58,7 @@ function sleep(ms: number): Promise<void> {
 }
 
 export async function authLogin(argv: any) {
-  const authServer = argv.authServer || process.env.POSTIZ_AUTH_SERVER || DEFAULT_AUTH_SERVER;
+  const authServer = argv.authServer || process.env.POSTNIFY_AUTH_SERVER || DEFAULT_AUTH_SERVER;
 
   console.log('🔐 Starting device authorization flow...\n');
 
@@ -122,7 +122,7 @@ export async function authLogin(argv: any) {
       if (response.ok && data.access_token) {
         saveCredentials({
           accessToken: data.access_token,
-          apiUrl: data.api_url || 'https://api.postiz.com',
+          apiUrl: data.api_url || 'https://api.postnify.com',
           organizationId: data.organization_id,
         });
 
@@ -168,7 +168,7 @@ export async function authLogout() {
 }
 
 export async function authStatus() {
-  const envKey = process.env.POSTIZ_API_KEY;
+  const envKey = process.env.POSTNIFY_API_KEY;
   const creds = loadCredentials();
 
   let apiKey: string | undefined;
@@ -188,12 +188,12 @@ export async function authStatus() {
     console.log('🔑 Authentication method: API Key (environment variable)');
     console.log(`🔑 Key: ${envKey.substring(0, 8)}...`);
     apiKey = envKey;
-    apiUrl = process.env.POSTIZ_API_URL || 'https://api.postiz.com';
+    apiUrl = process.env.POSTNIFY_API_URL || 'https://api.postnify.com';
   } else {
     console.log('❌ Not authenticated.');
     console.log('\nOptions:');
-    console.log('  1. OAuth2: postiz auth:login');
-    console.log('  2. API Key: export POSTIZ_API_KEY=your_api_key');
+    console.log('  1. OAuth2: postnify auth:login');
+    console.log('  2. API Key: export POSTNIFY_API_KEY=your_api_key');
     return;
   }
 
@@ -214,9 +214,9 @@ export async function authStatus() {
     } else if (response.status === 401 || response.status === 403) {
       console.log('❌ Credentials are expired or invalid. Please re-authenticate.');
       if (creds) {
-        console.log('   Run: postiz auth:login');
+        console.log('   Run: postnify auth:login');
       } else {
-        console.log('   Update your POSTIZ_API_KEY environment variable.');
+        console.log('   Update your POSTNIFY_API_KEY environment variable.');
       }
     } else {
       const error = await response.text();
