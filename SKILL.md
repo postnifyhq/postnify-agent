@@ -173,6 +173,10 @@ postnify posts:list --startDate "2024-01-01T00:00:00Z" --endDate "2024-12-31T23:
 
 # Delete post
 postnify posts:delete <post-id>
+
+# Change post status (draft ↔ schedule)
+postnify posts:status <post-id> --status draft     # Move back to draft, terminates any running publish workflow
+postnify posts:status <post-id> --status schedule  # Promote a draft into the publishing queue (uses the post's stored date)
 ```
 
 ### Analytics
@@ -731,6 +735,8 @@ postnify posts:create --json file.json                                          
 # Management
 postnify posts:list                                  # List posts
 postnify posts:delete <id>                          # Delete post
+postnify posts:status <id> --status draft           # Move to draft (stops workflow)
+postnify posts:status <id> --status schedule        # Queue draft for publishing
 postnify upload <file>                              # Upload media
 
 # Analytics

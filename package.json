@@ -1,6 +1,6 @@
 {
   "name": "postnify",
-  "version": "2.0.12",
+  "version": "2.0.13",
   "description": "Postnify CLI - Command line interface for the Postnify social media scheduling API",
   "main": "dist/index.js",
   "bin": {
