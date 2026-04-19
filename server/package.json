@@ -10,7 +10,6 @@
     "start:prod": "node dist/index.js"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2",
     "pg": "^8.13.1"
   },
   "devDependencies": {

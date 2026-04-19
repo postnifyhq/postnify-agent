@@ -1,7 +1,6 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { URL } from 'url';
 import { randomBytes } from 'crypto';
-import fetch from 'node-fetch';
 import pg from 'pg';
 
 // --- Configuration ---
