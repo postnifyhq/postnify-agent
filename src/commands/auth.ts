@@ -122,7 +122,7 @@ export async function authLogin(argv: any) {
       if (response.ok && data.access_token) {
         saveCredentials({
           accessToken: data.access_token,
-          apiUrl: data.api_url || 'https://api.postnify.com',
+          apiUrl: data.api_url || 'https://platform.postnify.com/api',
           organizationId: data.organization_id,
         });
 
@@ -188,7 +188,7 @@ export async function authStatus() {
     console.log('🔑 Authentication method: API Key (environment variable)');
     console.log(`🔑 Key: ${envKey.substring(0, 8)}...`);
     apiKey = envKey;
-    apiUrl = process.env.POSTNIFY_API_URL || 'https://api.postnify.com';
+    apiUrl = process.env.POSTNIFY_API_URL || 'https://platform.postnify.com/api';
   } else {
     console.log('❌ Not authenticated.');
     console.log('\nOptions:');

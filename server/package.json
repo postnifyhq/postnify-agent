@@ -1,7 +1,7 @@
 {
-  "name": "postiz-cli-auth-server",
+  "name": "postnify-cli-auth-server",
   "version": "1.0.0",
-  "description": "Device flow auth server for Postiz CLI",
+  "description": "Device flow auth server for Postnify CLI",
   "main": "index.ts",
   "scripts": {
     "dev": "tsx watch index.ts",

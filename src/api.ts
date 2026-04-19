@@ -11,7 +11,7 @@ export class PostizAPI {
 
   constructor(config: PostizConfig) {
     this.apiKey = config.apiKey;
-    this.apiUrl = config.apiUrl || 'https://api.postnify.com';
+    this.apiUrl = config.apiUrl || 'https://platform.postnify.com/api';
   }
 
   private async request(endpoint: string, options: any = {}) {
