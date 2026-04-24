@@ -1,8 +1,7 @@
 ---
-name: postnify
+name: postnify-agent
 description: Postnify is a tool to schedule social media and chat posts to 28+ channels X, LinkedIn, LinkedIn Page, Reddit, Instagram, Facebook Page, Threads, YouTube, Google My Business, TikTok, Pinterest, Dribbble, Discord, Slack, Kick, Twitch, Mastodon, Bluesky, Lemmy, Farcaster, Telegram, Nostr, VK, Medium, Dev.to, Hashnode, WordPress, ListMonk
-homepage: https://docs.postnify.com/public-api/introduction
-metadata: {"openclaw":{"emoji":"🌎","requires":{"bins":[],"env":["POSTNIFY_API_URL"]}}}
+metadata: {"openclaw":{"emoji":"🌎","requires":{"bins":["postnify"],"env":["POSTNIFY_API_KEY","POSTNIFY_API_URL"],"auth":["oauth2-device-flow","api-key"],"storage":["~/.postnify/credentials.json"],"network":["https://platform.postnify.com/api","https://cli-auth.postnify.com"]}}}
 ---
 
 ## Install Postnify if it doesn't exist
@@ -14,8 +13,7 @@ pnpm install -g postnify
 ```
 
 npm release: https://www.npmjs.com/package/postnify
-postnify github: https://github.com/postnifyhq/postnify-app
-postnify cli github: https://github.com/postnifyhq/postnify-app
+postnify cli github: https://github.com/postnifyhq/postnify-agent
 official website: https://postnify.com
 ---
 
@@ -675,7 +673,7 @@ https://clawhub.ai/nevo-david/agent-media
 
 **Deep-dive documentation:**
 - [HOW_TO_RUN.md](./HOW_TO_RUN.md) - Installation and setup methods
-- [COMMAND_LINE_GUIDE.md](./COMMAND_LINE_GUIDE.md) - Complete command syntax reference
+- [QUICK_START.md](./QUICK_START.md) - Complete command syntax reference
 - [PROVIDER_SETTINGS.md](./PROVIDER_SETTINGS.md) - All 28+ platform settings schemas
 - [INTEGRATION_TOOLS_WORKFLOW.md](./INTEGRATION_TOOLS_WORKFLOW.md) - Complete tools workflow guide
 - [INTEGRATION_SETTINGS_DISCOVERY.md](./INTEGRATION_SETTINGS_DISCOVERY.md) - Settings discovery workflow
